@@ -1,50 +1,179 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+        <title>slides.PBDesk.com - Demo Template</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <link rel="stylesheet" href="/css/reveal.css">
+        <link rel="stylesheet" href="/css/theme/black.css">
+        <link rel="stylesheet" href="/css/custom.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="/lib/css/zenburn.css">
+        <link rel="stylesheet" href="/plugin/title-footer/title-footer.css">
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? '/css/print/pdf.css' : '/css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+    </head>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>PBDesk.com/slides</h1>
+                    <h3>My Presentations & Flash Cards</h3>
+                    <hr/>
+                    <p>
+                        from the desk of
+                        <br/> <a href="http://pbdesk.com" target="_blank">Pinal Bhatt</a>
+                        <br/>
+                    </p>
+                </section>
+                <section>Slide 1</section>
+                <section>Slide 2</section>
+            </div>
+        </div>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                slideNumber: true,
+                history: true,
+                overview: true,
+                center: true,
+                touch: true,
+                loop: false,
+                fragments: true,
+                help: true,
+                viewDistance: 3,
+                menu: {
+                    side: 'left',
+                    numbers: false,
+                    titleSelector: 'h1, h2, h3, h4, h5, h6',
+                    hideMissingTitles: false,
+                    markers: false,
+                    themes: false,
+                    transitions: false,
+                    openButton: true,
+                    openSlideNumber: false,
+                    keyboard: true,
+                    custom: [
+                        {
+                            title: 'Links',
+                            icon: '<i class="fa fa-external-link">',
+                            src: '/shared/links.html'
+                        },
+                        {
+                            title: 'About',
+                            icon: '<i class="fa fa-info">',
+                            src: '/shared/about.html'
+                        }
+                    ]
+                },
+                chalkboard: {
+                    src: null,
+                    readOnly: undefined,
+                    toggleChalkboardButton: {
+                        left: "80px",
+                        bottom: "30px",
+                        top: "auto",
+                        right: "auto"
+                    },
+                    toggleNotesButton: {
+                        left: "130px",
+                        bottom: "30px",
+                        top: "auto",
+                        right: "auto"
+                    },
+                    transition: 800,
+                    theme: "whiteboard", //blackboard
+                    // configuration options for notes canvas and chalkboard
+                    color: ['rgba(0,0,255,1)', 'rgba(255,255,255,0.5)'],
+                    //background: ['rgba(127,127,127,.1)', '/plugin/chalkboard/img/blackboard.png'],
+                    pen: ['/plugin/chalkboard/img/boardmarker.png', '/plugin/chalkboard/img/chalk.png']
+                },
+                keyboard: {
+                    67: function () {
+                        RevealChalkboard.toggleNotesCanvas()
+                    }, // toggle notes canvas when 'c' is pressed
+                    66: function () {
+                        RevealChalkboard.toggleChalkboard()
+                    }, // toggle chalkboard when 'b' is pressed
+                    46: function () {
+                        RevealChalkboard.clear()
+                    }, // clear chalkboard when 'DEL' is pressed
+                    8: function () {
+                        RevealChalkboard.reset()
+                    }, // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+                    68: function () {
+                        RevealChalkboard.download()
+                    }, // downlad recorded chalkboard drawing when 'd' is pressed
+                },
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    {
+                        src: '/lib/js/classList.js',
+                        condition: function () {
+                            return !document.body.classList;
+                        }
+                    },
+                    {
+                        src: '/plugin/markdown/marked.js',
+                        condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: '/plugin/markdown/markdown.js',
+                        condition: function () {
+                            return !!document.querySelector('[data-markdown]');
+                        }
+                    },
+                    {
+                        src: '/plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                    },
+                    {
+                    src: '/plugin/zoom-js/zoom.js',
+                    async: true
+                    },
+                    {
+                    src: '/plugin/notes/notes.js',
+                    async: true
+                    },
+                    {
+                    src: '/plugin/menu/menu.js'
+                    },
+                    {
+                    src: '/plugin/chalkboard/chalkboard.js'
+                    },
+                    {
+                    src: '/plugin/title-footer/title-footer.js',
+                    async: true,
+                    callback: function () {
+                    title_footer.initialize("from the desk of Pinal Bhatt");
+                    }
+                    }
+                ]
+
+            });
+        </script>
+    </body>
+
 </html>
